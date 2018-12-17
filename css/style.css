@@ -7,6 +7,7 @@
 .menu.nav-fixed{top: 72px}
 ul.navbar-nav{float: none!important;}
 .navbar-nav>li{float: none;}
+.progress{z-index:2;}
 @media screen and (max-width: 768px){
     .navbar{
         height: auto;

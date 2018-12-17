@@ -1,5 +1,4 @@
 // Referencing jquery library for intellisence
-/// <reference path="typings/index.d.ts"/>
 
 jQuery(function ($) {
     var _i = -1;
