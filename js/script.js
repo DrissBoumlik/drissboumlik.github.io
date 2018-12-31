@@ -2,6 +2,9 @@
 
 jQuery(function ($) {
     var _i = -1;
+    $('html').on('click', function (){
+        $('#menu-container').slideUp(300);
+    });
     $('.navbar-toggle').on('click', function (){
         _i < 0 ? $('#menu-container').slideDown(300) : $('#menu-container').slideUp(300);
         _i *= -1;
