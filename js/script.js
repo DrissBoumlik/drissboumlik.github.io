@@ -2,11 +2,15 @@
 
 jQuery(function ($) {
     var _i = -1;
-    $('html').on('click', function (){
-        $('#menu-container').slideUp(300);
+    $('html').on('click', function (event){
+        if(!$(event.target).closest('.navbar-toggle').length)
+        { $('#menu-container').slideUp(300); _i = -1; }
     });
     $('.navbar-toggle').on('click', function (){
-        _i < 0 ? $('#menu-container').slideDown(300) : $('#menu-container').slideUp(300);
+        if(_i < 0){
+            $('#menu-container').slideDown(300);
+        }else
+            $('#menu-container').slideUp(300);
         _i *= -1;
     });
     $('#menu-container').delegate('li', 'click', function () { 
