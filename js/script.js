@@ -15,6 +15,9 @@ jQuery(function ($) {
     });
     $('#menu-container').delegate('li', 'click', function () { 
         $('#menu-container').slideUp(300)
+        console.log(this);
+        // toggle active class to this li
+        activeElementSummary($this, '#menu-container li');
         _i *= -1;
     });
     // #region SECTION: EVENTS
@@ -25,7 +28,7 @@ jQuery(function ($) {
         clearTimeout(hide);
     }, 6000)
     $('.summary-container').delegate('.summary-item', 'click', function(){
-        activeElementSummary(this);
+        activeElementSummary(this, resume_summary);
     });
     
     // Contact ME 
@@ -186,7 +189,7 @@ jQuery(function ($) {
             var elements = $('.competences .progress-bar').toArray();
             index = 0
             if(!browser_scroll)
-                activeElementSummary(resume_summary[0]) // TESTING:
+                activeElementSummary(resume_summary[0], resume_summary) // TESTING:
             if (!first_scroll) {
                 first_scroll = true;
                 elements.forEach(function (element) {
@@ -202,45 +205,45 @@ jQuery(function ($) {
         section = $('.experiences').offset();
         if (section !== undefined && scroll_top >= section.top - offset) {
             if(!browser_scroll)
-                activeElementSummary(resume_summary[1]);
+                activeElementSummary(resume_summary[1], resume_summary);
             animateOneByOne($('.experiences .section'), 'rotated', false, 200);
         }
         section = $('.education').offset();
         if (section !== undefined && scroll_top >= section.top - offset) {
             // $('.education .section').removeClass('rotated');
             if(!browser_scroll)
-                activeElementSummary(resume_summary[2]);
+                activeElementSummary(resume_summary[2], resume_summary);
             animateOneByOne($('.education .section'), 'rotated', false, 200);
         }
         section = $('.portfolio').offset();
         if (section !== undefined && scroll_top >= section.top - offset) {
             // $('.portfolio .box').removeClass('small');
             if(!browser_scroll)
-                activeElementSummary(resume_summary[3]);
+                activeElementSummary(resume_summary[3], resume_summary);
             animateOneByOne($('.portfolio .box'), 'small', false, 80);
         }
         section = $('.passion').offset();
         if (section !== undefined && scroll_top >= section.top - offset) {
             if(!browser_scroll)
-                activeElementSummary(resume_summary[4]);
+                activeElementSummary(resume_summary[4], resume_summary);
             animateOneByOne($('.passion .list-group-item'), 'grow', true, 80);
         }
         section = $('.other-experiences').offset();
         if (section !== undefined && scroll_top >= section.top - offset) {
             if(!browser_scroll)
-                activeElementSummary(resume_summary[5]);
+                activeElementSummary(resume_summary[5], resume_summary);
             animateOneByOne($('.other-experiences .list-group-item'), 'grow', true, 80);
         }
         section = $('.recommandations').offset();
         if (section !== undefined && scroll_top >= section.top - offset) {
             if(!browser_scroll)
-                activeElementSummary(resume_summary[6]);
+                activeElementSummary(resume_summary[6], resume_summary);
             $('.carousel .carousel-control').removeClass('opaque').addClass('back-to-place-x go-front')
         }
         section = $('.contact-me').offset();
         if (section !== undefined && scroll_top >= section.top - offset) {
             if(!browser_scroll)
-                activeElementSummary(resume_summary[7]);
+                activeElementSummary(resume_summary[7], resume_summary);
             $('.contact-me .thank-you').addClass('bounceInRight').removeClass('bounceOutRight');
             $('.contact-me .form-container').addClass('bounceInLeft').removeClass('bounceOutLeft');
         }
@@ -311,8 +314,8 @@ jQuery(function ($) {
         }
     }
     
-    function activeElementSummary(element){
-        $('.summary-item').removeClass('active');
+    function activeElementSummary(element, siblings){
+        $(siblings).removeClass('active');
         $(element).addClass('active');
     }
     // #endregion FUNCTIONS
