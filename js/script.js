@@ -17,7 +17,7 @@ jQuery(function ($) {
         $('#menu-container').slideUp(300)
         console.log(this);
         // toggle active class to this li
-        activeElementSummary($this, '#menu-container li');
+        activeElementSummary(this, '#menu-container li');
         _i *= -1;
     });
     // #region SECTION: EVENTS
